@@ -151,3 +151,52 @@ The client-server model is a fundamental network architecture where the **client
 | Examples         | Web apps, cloud services     | File sharing, blockchain      |
 | Scalability      | High with proper setup       | High but harder to control    |
 
+
+## 8. Anomalies and the Need for Normalization
+
+### 🔍 What are Anomalies?
+Anomalies are problems that arise when data is not stored in a well-structured format. These typically occur in poorly designed relational database tables.
+
+There are three main types:
+
+#### 1. Insertion Anomaly
+Occurs when we cannot insert a data item because of the absence of another.
+
+**Example:**
+- You cannot insert a new student record unless you also provide course details.
+
+#### 2. Update Anomaly
+Occurs when redundant data exists and updates to one part lead to inconsistencies.
+
+**Example:**
+- If an instructor’s email is stored in multiple rows and one is updated incorrectly, inconsistency occurs.
+
+#### 3. Deletion Anomaly
+Occurs when deletion of one piece of information unintentionally deletes related important data.
+
+**Example:**
+- Deleting the last student enrolled in a course may delete the course information entirely.
+
+---
+
+### 9. Why Normalization?
+**Normalization** is the process of organizing data to reduce redundancy and improve data integrity.
+
+**Goals of Normalization:**
+- Eliminate redundant data
+- Ensure data dependencies make sense (data is stored logically)
+- Avoid anomalies in insert, update, and delete operations
+
+
+| Normal Form | Rule / Condition | Purpose / Benefit | Example |
+|-------------|------------------|-------------------|---------|
+| **1NF**     | All attributes must be atomic (indivisible). No repeating groups or arrays. | Eliminates duplicate columns and ensures a unique value in each field. | A table with multiple phone numbers in one field violates 1NF. |
+| **2NF**     | Must be in 1NF and every non-prime attribute should be fully functionally dependent on the entire primary key. | Removes partial dependencies (important for composite keys). | Student-Course table: StudentName depends only on StudentID, not on the combination of (StudentID, CourseID). |
+| **3NF**     | Must be in 2NF and all non-prime attributes should not depend on other non-prime attributes (i.e., no transitive dependencies). | Avoids indirect relationships that can cause anomalies. | If a table stores StudentID → DepartmentID → DepartmentName, then DepartmentName should be in another table. |
+| **BCNF**    | A stronger version of 3NF: For every functional dependency X → Y, X should be a super key. | Eliminates anomalies not handled by 3NF when there are overlapping candidate keys. | In a table where both {Course, Instructor} and {Instructor, Time} are keys, splitting is required if Instructor is not a super key. |
+
+
+
+---
+
+
