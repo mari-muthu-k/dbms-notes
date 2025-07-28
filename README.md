@@ -190,11 +190,29 @@ Occurs when deletion of one piece of information unintentionally deletes related
 
 | Normal Form | Rule / Condition | Purpose / Benefit | Example |
 |-------------|------------------|-------------------|---------|
+
 | **1NF**     | All attributes must be atomic (indivisible). No repeating groups or arrays. | Eliminates duplicate columns and ensures a unique value in each field. | A table with multiple phone numbers in one field violates 1NF. |
 | **2NF**     | Must be in 1NF and every non-prime attribute should be fully functionally dependent on the entire primary key. | Removes partial dependencies (important for composite keys). | Student-Course table: StudentName depends only on StudentID, not on the combination of (StudentID, CourseID). |
 | **3NF**     | Must be in 2NF and all non-prime attributes should not depend on other non-prime attributes (i.e., no transitive dependencies). | Avoids indirect relationships that can cause anomalies. | If a table stores StudentID → DepartmentID → DepartmentName, then DepartmentName should be in another table. |
 | **BCNF**    | A stronger version of 3NF: For every functional dependency X → Y, X should be a super key. | Eliminates anomalies not handled by 3NF when there are overlapping candidate keys. | In a table where both {Course, Instructor} and {Instructor, Time} are keys, splitting is required if Instructor is not a super key. |
 
+
+**1NF :**
+- <img width="881" height="351" alt="image" src="https://github.com/user-attachments/assets/b9e209fe-9a82-4a1d-b82b-e3ab55763de3" />
+
+**2NF :**
+- <img width="634" height="344" alt="image" src="https://github.com/user-attachments/assets/314a4268-3aac-43e6-a801-3f4210e4cbb6" />
+- <img width="755" height="344" alt="image" src="https://github.com/user-attachments/assets/d9747c1f-87eb-4a50-aa38-86b8835ad305" />
+
+
+**3NF :**
+- <img width="564" height="278" alt="image" src="https://github.com/user-attachments/assets/9066ee2a-1c1c-451f-9b4e-81b6f44e624e" />
+- <img width="777" height="355" alt="image" src="https://github.com/user-attachments/assets/a0d1d27a-831e-4b1c-9fd6-3782816a057b" />
+
+
+**BCNF :**
+- <img width="643" height="402" alt="image" src="https://github.com/user-attachments/assets/ace9a48c-6ece-4759-b633-8916b71ec8db" />
+- <img width="786" height="373" alt="image" src="https://github.com/user-attachments/assets/7a2e2e1d-e15f-48af-aece-c580800e7d10" />
 
 
 ---
