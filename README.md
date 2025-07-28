@@ -217,4 +217,28 @@ Occurs when deletion of one piece of information unintentionally deletes related
 
 ---
 
+## 10. Denormalization
+
+**Denormalization** is the process of intentionally introducing redundancy into a normalized database to improve read performance.
+
+### Why Denormalize?
+While normalization removes redundancy and improves data integrity, it may increase the number of joins required during queries. Denormalization simplifies queries by:
+- Reducing the number of joins.
+- Improving read performance.
+- Enabling faster data retrieval in reporting systems.
+
+### Common Denormalization Techniques:
+| Technique | Description | Example |
+|----------|-------------|---------|
+| Merging Tables | Combine two or more tables into one. | Merging `Customers` and `Orders` into one table to avoid joins. |
+| Adding Redundant Columns | Store repeated data to avoid joins. | Storing `DepartmentName` directly in the `Employee` table. |
+| Pre-computed Aggregates | Store summary data like counts or totals. | Keeping `total_sales` in a `Customer` table instead of calculating from transactions every time. |
+
+> ⚠️ **Trade-off**: Denormalization sacrifices storage space and introduces the risk of data anomalies for the sake of performance.
+
+---
+
+
+
+
 
